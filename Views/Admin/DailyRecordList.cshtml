@@ -1,0 +1,147 @@
+﻿@model IEnumerable<SoulHealth.Models.DailyRecord>
+
+@{
+    ViewBag.Title = "DailyRecordList";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+<div id="Container">
+
+    <h2>لیست گزارشات روزانه کاربران</h2>
+
+    <p>
+        داده های این جدول توسط کاربران اپلیکیشن بصورت روزانه پر می شود.
+        ادمین با بررسی اطلاعات این جدول باید در <a href="@Url.Action("ASelfManagement")">جدول فعالیت های خود مدیریتی</a> یکی از سطوح را برای کاربر انتخاب کند.
+    </p>
+    @using (Html.BeginForm())
+    {
+        <div>
+            <input type="text" name="searchpoint" id="searchpoint" placeholder="شماره پرونده کاربر را وارد کنید">
+
+            <input type="submit" class="btn-outline-info" style="border-radius:15%;" value="جستجو">
+
+        </div>
+    }
+    <br />
+
+    <table class="table table-bordered table-responsive">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(model => model.iid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.morningDrug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.eveningDrug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nightDrug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ACognition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.APhysical)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ASocial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bPressure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hBeat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bSugar)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.iid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.morningDrug)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.eveningDrug)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nightDrug)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ACognition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.APhysical)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ASocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Weight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Height)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bPressure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hBeat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bSugar)
+                </td>
+
+                <td>
+                    @Html.ActionLink("ویرایش فعالیت خود مدیریتی جدید", "ASelfManagement", new { id = item.id }, new { @class = "btn btn-outline-success" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        <p>
+            @Html.ActionLink("بازگشت به صفحه اصلی", "Index")
+        </p>
+    </div>
+</div>
+
+
+
+<style>
+
+    .div {
+        width: 30%;
+        /*margin: 5px;*/
+    }
+
+    * {
+        font-family: 'iransansweb';
+    }
+
+    #Container {
+        padding: 10px;
+    }
+</style>
+
+<style type="text/css">
+
+    @@font-face {
+        font-family: 'iransansweb';
+        src: url('../../fonts/farsi/iransansweb.ttf') format('truetype');
+    }
+</style>

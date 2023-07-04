@@ -1,0 +1,168 @@
+﻿@model SoulHealth.Models.LoginViewModel
+
+@{
+    Layout = null;
+}
+<div class="container">
+    <div class="screen">
+        <div class="screen__content">
+            <h2>فرم ورود به سایت</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <section id="loginForm login">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @*<h4>Use a local account to log in.</h4>*@
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group login__field">
+                                <lable>ایمیل</lable>
+                                <div class="col-md-10 login__field">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control login__input" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group login__field">
+                                <lable>رمز عبور</lable>
+
+                                <div class="col-md-10 login__field">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control login__input" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group login__field">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class="checkbox">
+                                        <lable>مرا به خاطر بسپار</lable>
+                                        @Html.CheckBoxFor(m => m.RememberMe)
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div>
+                                    
+                                    <input type="submit" value="ورود" class="btn login__submit" />
+                                </div>
+                            </div>
+
+                           
+                                <div >
+                                    @Html.ActionLink("ثبت نام", "Register")
+                                </div>
+
+                            
+                            @* Enable this once you have account confirmation enabled for password reset functionality
+                                <p>
+                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                </p>*@
+                        }
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'iransansweb';
+            text-align:center;
+        }
+
+        body {
+            background: linear-gradient(90deg, #C7C5F4, #776BCC);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .screen {
+            background: linear-gradient(90deg, #5D54A4, #7C78B8);
+            position: relative;
+            height: 600px;
+            width: 360px;
+            box-shadow: 0px 0px 24px #5C5696;
+        }
+
+        .screen__content {
+            z-index: 1;
+            position: relative;
+            height: 100%;
+        }
+
+        .screen__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+          
+            clip-path: inset(0 0 0 0);
+        }
+
+
+        .login__field {
+            padding: 20px 0px;
+            position: relative;
+        }
+
+
+
+        .login__input {
+            border: none;
+            border-bottom: 2px solid #D1D1D4;
+            background: none;
+            padding: 10px;
+            padding-left: 24px;
+            font-weight: 700;
+            width: 75%;
+            transition: .2s;
+        }
+
+
+
+        .login__submit {
+            background: #fff;
+            font-size: 14px;
+            margin: 10%;
+            padding: 16px 20px;
+            border-radius: 26px;
+            border: 1px solid #D4D3E8;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            text-align:center;
+            width: 80%;
+            color: #4C489D;
+            box-shadow: 0px 2px 2px #5C5696;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+
+      
+    </style>
+    <style>
+
+        @@font-face {
+            font-family: 'iransansweb';
+            src: url('../../fonts/farsi/iransansweb.ttf') format('truetype');
+        }
+    </style>

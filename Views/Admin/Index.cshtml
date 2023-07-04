@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+<div id="Container">
+    <h2 class="font" >صفحه اصلی</h2>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("لیست گزارشات روزانه کاربران", "DailyRecordList", new { }, new { @class = "btn btn-info div font" })
+            </div>
+            
+        </div>
+        <br />
+
+        @*کاربرجدید*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد کاربر جدید", "Patient", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("مشاهده لیست کاربران", "PatientList", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+        <br />
+
+        @*سابقه بیماری*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد سابقه دارویی", "MedicationRecord", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("لیست سابقه دارویی بیماران", "MedRecordsList", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+        <br />
+
+        @*محدودیت بیمار*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد محدودیت جدید", "PatientLimitation", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("لیست محدودیت بیماران", "PLimitationList", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+        <br />
+
+        @*داده های فیزیولوژیک*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد داده های فیزیولوژیک", "PhysiologicalData", new { }, new { @class = "btn btn-primary div font" })
+
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("لیست اطلاعات فیزیولوژیک بیماران", "PhyDataList", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+        <br />
+
+        @*تجویز دارو*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد دارو جدید", "Drug", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("مشاهده لیست داروها", "DrugList", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+        <br />
+
+        @*فعالیت شناختی*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد فعالیت شناختی جدید", "ACognition", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("مشاهده لیست فعالیت های شناختی", "ACognitionList", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+        <br />
+
+        @*فعالیت فیزیکی*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد فعالیت فیزیکی جدید", "APhysical", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("مشاهده لیست فعالیت های فیزیکی", "APhysicalList", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+        <br />
+
+        @*فعالیت اجتماعی*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد فعالیت اجتماعی جدید", "ASocial", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("مشاهده لیست فعالیت های اجتماعی", "ASocialList", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+        <br />
+
+        @*فعالیت خود مدیریتی*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد فعالیت خود مدیریتی جدید", "ASelfManagement", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("مشاهده لیست فعالیت های خود مدیریتی", "ASelfManagementList", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+
+
+    </div>
+    
+</div>
+
+<style>
+
+    .div {
+        width: 70%;
+        margin: 5px;
+    }
+    .font {
+        font-family: 'iransansweb';
+    }
+    #Container{
+        padding:10px;
+    }
+    
+</style>
+
+<style type="text/css">
+
+    @@font-face {
+        font-family: 'iransansweb';
+        src: url('../../fonts/farsi/iransansweb.ttf') format('truetype');
+    }
+   
+</style>

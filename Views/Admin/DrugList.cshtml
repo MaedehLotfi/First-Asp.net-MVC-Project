@@ -1,0 +1,135 @@
+﻿@model IEnumerable<SoulHealth.Models.Drug>
+
+@{
+    ViewBag.Title = "DrugList";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+<div id="Container">
+    <h2>لیست داروها</h2>
+
+    <p>
+        @Html.ActionLink("ایجاد دارو جدید", "Drug")
+    </p>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            <input type="text" name="searchpoint" id="searchpoint" placeholder="شماره پرونده کاربر را وارد کنید">
+
+            <input type="submit" class="btn-outline-info" style="border-radius:15%;" value="جستجو">
+
+        </div>
+    }
+    <br />
+
+    <table class="table table-bordered table-responsive">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(model => model.PId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.drugName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.drugDosage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.diseaseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.usingDescription)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.drugName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.drugDosage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.diseaseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.usingDescription)
+                </td>
+
+                <td>
+                    @Html.ActionLink("ویرایش دارو کاربر", "Drug", new { id = item.id }, new { @class = "btn btn-outline-success" })
+
+                    <button class="btn btn-outline-danger deletebtn" myid="@item.id">حذف دارو</button>
+                    @Html.ActionLink("ایجاد فعالیت شناختی برای کاربر", "ACognition", new { id = item.id }, new { @class = "btn btn-primary" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        <p>
+            @Html.ActionLink("بازگشت به صفحه اصلی", "Index")
+        </p>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".deletebtn").click(function () {
+            var result = confirm("آیا از حذف دارو کاربر مطمئن هستید؟");
+            if (result == true) {
+                var idtd = $(this).attr("myid");
+                var tr = $(this).parent().parent();
+
+                $.ajax({
+                    url: "@Url.Action("DeleteACognitionByAjax")",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {id: idtd},
+                    success: function (response) {
+                        alert(response.msg)
+                        $(tr).remove();
+                    },
+                    error: function (response) {
+                        alert('فعالیت شناختی حذف نشد');
+                    }
+                });
+
+            }
+            });
+    });
+</script>
+
+<style>
+
+    .div {
+        width: 30%;
+        /*margin: 5px;*/
+    }
+
+    * {
+        font-family: 'iransansweb';
+    }
+
+    #Container {
+        padding: 10px;
+    }
+</style>
+
+<style type="text/css">
+
+    @@font-face {
+        font-family: 'iransansweb';
+        src: url('../../fonts/farsi/iransansweb.ttf') format('truetype');
+    }
+</style>
+

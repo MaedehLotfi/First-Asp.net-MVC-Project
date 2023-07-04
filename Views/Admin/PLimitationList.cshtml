@@ -1,0 +1,139 @@
+﻿@model IEnumerable<SoulHealth.Models.PatientLimitation>
+
+@{
+    ViewBag.Title = "PLimitationList";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+<div id="Container">
+    <h2>لیست محدودیت کاربران</h2>
+
+    <p>
+        @Html.ActionLink("ایجاد محدودیت جدید", "PatientLimitation")
+    </p>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            <input type="text" name="searchpoint" id="searchpoint" placeholder="شماره پرونده کاربر را وارد کنید">
+
+            <input type="submit" class="btn-outline-info" style="border-radius:15%;" value="جستجو">
+
+        </div>
+    }
+    <br />
+    <table class="table  table-bordered table-responsive">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(model => model.PaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movementRestriction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicalRestriction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.foodRestriction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.otherRestriction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.limitationDescription)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movementRestriction)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicalRestriction)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.foodRestriction)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.otherRestriction)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.limitationDescription)
+                </td>
+                <td>
+                    @Html.ActionLink("ویرایش محدودیت کاربر", "PatientLimitation", new { id = item.id }, new { @class = "btn btn-outline-success" })
+
+                    <button class="btn btn-outline-danger deletebtn" myid="@item.id">حذف محدودیت کاربر</button>
+                    @Html.ActionLink("افزودن داده های فیزیولوژیک برای کاربر", "PhysiologicalData", new { id = item.id }, new { @class = "btn btn-primary" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        <p>
+            @Html.ActionLink("بازگشت به صفحه اصلی", "Index")
+        </p>
+    </div>
+
+</div>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".deletebtn").click(function () {
+            var result = confirm("آیا از حذف محدودیت کاربر مطمئن هستید؟");
+            if (result == true) {
+                var idtd = $(this).attr("myid");
+                var tr = $(this).parent().parent();
+
+                $.ajax({
+                    url: "@Url.Action("DeleteLimitationByAjax")",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {id: idtd},
+                    success: function (response) {
+                        alert(response.msg)
+                        $(tr).remove();
+                    },
+                    error: function (response) {
+                        alert('محدودیت کاربر حذف نشد');
+                    }
+                });
+
+            }
+            });
+    });
+</script>
+<style>
+
+    .div {
+        width: 30%;
+        /*margin: 5px;*/
+    }
+
+    * {
+        font-family: 'iransansweb';
+    }
+
+    #Container {
+        padding: 10px;
+    }
+</style>
+
+<style type="text/css">
+
+    @@font-face {
+        font-family: 'iransansweb';
+        src: url('../../fonts/farsi/iransansweb.ttf') format('truetype');
+    }
+</style>

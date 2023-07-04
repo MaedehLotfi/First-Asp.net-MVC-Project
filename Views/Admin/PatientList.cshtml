@@ -1,0 +1,144 @@
+﻿@model IEnumerable<SoulHealth.Models.Patient>
+
+@{
+    ViewBag.Title = "PatientList";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+<div id="Container">
+
+    <h2>لیست کاربران</h2>
+
+    <p>
+        @Html.ActionLink("ایجاد کاربر جدید", "Patient")
+    </p>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            <input type="text" name="searchpoint" id="searchpoint" placeholder="شماره پرونده کاربر را وارد کنید">
+         
+            <input type="submit" class="btn-outline-info" style="border-radius:15%;" value="جستجو">
+
+        </div>
+    }
+    <br />
+
+    <table class="table table-bordered table-responsive">
+        <tr class="table-info">
+            <th>
+                <label>شماره پرونده</label>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NationalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gender)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NationalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+                <td>
+                    @Html.ActionLink("ویرایش کاربر", "Patient", new { id = item.id }, new { @class = "btn btn-outline-success" })
+
+                    <button class="btn btn-outline-danger deletebtn" myid="@item.id">حذف کاربر</button>
+
+                    @Html.ActionLink("افزودن سابقه دارویی برای کاربر", "MedicationRecord", new { id = item.id }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        <p>
+            @Html.ActionLink("بازگشت به صفحه اصلی", "Index")
+        </p>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".deletebtn").click(function () {
+            var result = confirm("آیا از حذف کاربر مطمئن هستید؟");
+            if (result == true) {
+                var idtd = $(this).attr("myid");
+                var tr = $(this).parent().parent();
+
+                $.ajax({
+                    url: "@Url.Action("DeletePatientByAjax")",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {id: idtd},
+                    success: function (response) {
+                        alert(response.msg)
+                        $(tr).remove();
+                    },
+                    error: function (response) {
+                        alert('کاربر حذف نشد');
+                    }
+                });
+
+            }
+            });
+    });
+</script>
+
+<style>
+
+    .div {
+        width: 30%;
+        /*margin: 5px;*/
+    }
+
+    * {
+        font-family: 'iransansweb';
+    }
+
+    #Container {
+        padding: 10px;
+    }
+</style>
+
+<style type="text/css">
+
+    @@font-face {
+        font-family: 'iransansweb';
+        src: url('../../fonts/farsi/iransansweb.ttf') format('truetype');
+    }
+</style>

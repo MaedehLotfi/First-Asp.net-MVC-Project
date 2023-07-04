@@ -1,0 +1,115 @@
+﻿@model SoulHealth.Models.PatientLimitation
+
+@{
+    ViewBag.Title = "PatientLimitation";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+<div id="Container">
+    <h2>محدودیت های بیمار</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <h4 style="color:red">لطفا محدودیت های بیمار با شماره پرونده مشخص را انتخاب کنید</h4>
+            <br />
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PaId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PaId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PaId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.movementRestriction, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.movementRestriction)
+                        @Html.ValidationMessageFor(model => model.movementRestriction, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.physicalRestriction, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.physicalRestriction)
+                        @Html.ValidationMessageFor(model => model.physicalRestriction, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.foodRestriction, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.foodRestriction)
+                        @Html.ValidationMessageFor(model => model.foodRestriction, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.otherRestriction, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.otherRestriction)
+                        @Html.ValidationMessageFor(model => model.otherRestriction, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.limitationDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.limitationDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.limitationDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="ذخیره" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <div>
+        @Html.ActionLink("بازگشت به لیست محدودیت بیماران", "PLimitationList")
+    </div>
+</div>
+<style>
+
+    .div {
+        width: 30%;
+        /*margin: 5px;*/
+    }
+
+    * {
+        font-family: 'iransansweb';
+    }
+
+    #Container {
+        padding: 10px;
+    }
+</style>
+
+<style type="text/css">
+
+    @@font-face {
+        font-family: 'iransansweb';
+        src: url('../../fonts/farsi/iransansweb.ttf') format('truetype');
+    }
+</style>

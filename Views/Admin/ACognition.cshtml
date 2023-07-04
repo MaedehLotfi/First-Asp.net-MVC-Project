@@ -1,0 +1,121 @@
+﻿@model SoulHealth.Models.ACognition
+
+@{
+    ViewBag.Title = "ACognition";
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+<div id="Container">
+    <h2>فعالیت های شناختی</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 style="color:red">لطفا یک سطح فعالیت شناختی را برای کاربر با شماره پرونده مشخص انتخاب کنید</h4>
+            <br />
+            <h5>توضیحات:</h5>
+            <h6>فعالیت های شناختی شامل فعالیت هایی جهت تحریک عملکردهای شناختی مانند توجه، حافظه، حل مسئله و.. می باشد.</h6>
+            <h6>نمونه فعالیت های شناختی عملی: حل جدول، خواندن کتاب، خواندن روزنامه</h6>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PatientId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PatientId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PatientId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Level1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Level1)
+                        @Html.ValidationMessageFor(model => model.Level1, "", new { @class = "text-danger" })
+                        <p>در صورت انجام فعالیت شناختی دو الی سه بار در هفته این سطح را انتخاب کنید.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Level2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Level2)
+                        @Html.ValidationMessageFor(model => model.Level2, "", new { @class = "text-danger" })
+                        <p>در صورت انجام فعالیت شناختی سه الی چهار بار در هفته این سطح را انتخاب کنید.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Level3, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Level3)
+                        @Html.ValidationMessageFor(model => model.Level3, "", new { @class = "text-danger" })
+                        <p>در صورت انجام فعالیت شناختی بصورت روزانه این سطح را انتخاب کنید.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Level4, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Level4)
+                        @Html.ValidationMessageFor(model => model.Level4, "", new { @class = "text-danger" })
+                        <p>در صورت انجام چندین فعالیت شناختی در طول هفته این سطح را انتخاب کنید.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SocialDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SocialDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SocialDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="ذخیره" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("بازگشت به لیست فعالیت های شناختی", "ACognitionList")
+    </div>
+</div>
+
+<style>
+
+    .div {
+        width: 30%;
+        /*margin: 5px;*/
+    }
+
+    * {
+        font-family: 'iransansweb';
+    }
+
+    #Container {
+        padding: 10px;
+    }
+</style>
+
+<style type="text/css">
+
+    @@font-face {
+        font-family: 'iransansweb';
+        src: url('../../fonts/farsi/iransansweb.ttf') format('truetype');
+    }
+</style>
