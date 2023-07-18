@@ -32,6 +32,16 @@ namespace SoulHealth.Controllers
             }
             return View(result);
         }
+        public async Task<ActionResult> DeleteReportsByAjax(int id)
+        {
+            var result = mydb.DailyRecords.Where(p => p.id == id).FirstOrDefault();
+            mydb.DailyRecords.Remove(result);
+            mydb.SaveChanges();
+
+            return Json(new { msg = "گزارش کاربر با موفقیت حذف شد" });
+
+        }
+
 
         //Add+Edit Patient
         public ActionResult Patient(int? id)
@@ -562,6 +572,62 @@ namespace SoulHealth.Controllers
         {
             var result = mydb.MedicationRecords.Where(p => p.id == id).FirstOrDefault();
             mydb.MedicationRecords.Remove(result);
+            mydb.SaveChanges();
+
+            return Json(new { msg = "سابقه بیماری کاربر با موفقیت حذف شد" });
+
+        }
+
+        //DiseaseRecords
+        public ActionResult PatientDiseaseRecords(int? id)
+        {
+            var result = new SoulHealth.Models.DiseaseRecord();
+            if (id != null)
+            {
+                var row = mydb.DiseaseRecords.Where(p => p.id == id).FirstOrDefault();
+                result = row;
+            }
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult PatientDiseaseRecords(SoulHealth.Models.DiseaseRecord row)
+        {
+            if (ModelState.IsValid == true)
+            {
+                if (row.id != 0)
+                {
+                    var result = mydb.DiseaseRecords.Where(p => p.id == row.id).FirstOrDefault();
+                    result.DiseaseTitle = row.DiseaseTitle;
+                    result.DiseaseDescription = row.DiseaseDescription;
+                    result.userId = row.userId;
+
+                    mydb.SaveChanges();
+                    return RedirectToAction("DiseaseRecords");
+                }
+                else
+                {
+                    mydb.DiseaseRecords.Add(row);
+                    mydb.SaveChanges();
+                    return RedirectToAction("DiseaseRecords");
+                }
+            }
+            return View(row);
+        }
+        public ActionResult DiseaseRecords(int? searchpoint)
+        {
+            var result = mydb.DiseaseRecords.ToList();
+            if (searchpoint != null && searchpoint != 0)
+            {
+                result = result.Where(p => p.userId == searchpoint).ToList();
+            }
+            return View(result);
+        }
+
+        public async Task<ActionResult> DeleteDiseaseRecordsByAjax(int id)
+        {
+            var result = mydb.DiseaseRecords.Where(p => p.id == id).FirstOrDefault();
+            mydb.DiseaseRecords.Remove(result);
             mydb.SaveChanges();
 
             return Json(new { msg = "سابقه بیماری کاربر با موفقیت حذف شد" });

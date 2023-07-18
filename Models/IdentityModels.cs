@@ -25,8 +25,7 @@ namespace SoulHealth.Models
         {
         }
         public DbSet<Patient> Patients { get; set; }
-        
-public DbSet<Drug> Drugs { get; set; }
+        public DbSet<Drug> Drugs { get; set; }
         public DbSet<ACognition> ACognitions { get; set; }
         public DbSet<PatientLimitation> limitations { get; set; }
         public DbSet<PhysiologicalData> PhysiologicalDatas { get; set; }
@@ -36,6 +35,7 @@ public DbSet<Drug> Drugs { get; set; }
         public DbSet<ASocial> ASocials { get; set; }
         public DbSet<DailyRecord> DailyRecords { get; set; }
 
+        public DbSet<DiseaseRecord> DiseaseRecords { get; set; }
 
 
         public static ApplicationDbContext Create()

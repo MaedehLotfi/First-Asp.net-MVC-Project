@@ -28,6 +28,6 @@ namespace SoulHealth.Models
         public int PId { get; set; }
 
         [ForeignKey(nameof(PId))]
-        public virtual Patient Patients { get; set; }
+        public Patient Person { get; set; }
     }
 }

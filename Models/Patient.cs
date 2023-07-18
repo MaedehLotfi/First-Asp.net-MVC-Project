@@ -37,6 +37,7 @@ namespace SoulHealth.Models
         public virtual ICollection<ASelfManagement> ASelfManagement { get; set; }
         public virtual ICollection<ASocial> ASocials { get; set; }
         public virtual ICollection<DailyRecord> DailyRecords { get; set; }
+        public virtual ICollection<DiseaseRecord> DiseaseRecords { get; set; }
 
 
 

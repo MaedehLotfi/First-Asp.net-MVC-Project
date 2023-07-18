@@ -11,7 +11,7 @@
             <div class="col-sm col-md-6">
                 @Html.ActionLink("لیست گزارشات روزانه کاربران", "DailyRecordList", new { }, new { @class = "btn btn-info div font" })
             </div>
-            
+
         </div>
         <br />
 
@@ -27,6 +27,17 @@
         <br />
 
         @*سابقه بیماری*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("ایجاد سابقه بیماری", "PatientDiseaseRecords", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("لیست سابقه بیماری بیماران", "DiseaseRecords", new { }, new { @class = "btn btn-primary div font" })
+            </div>
+        </div>
+        <br />
+
+        @*سابقه دارویی*@
         <div class="row">
             <div class="col-sm col-md-6">
                 @Html.ActionLink("ایجاد سابقه دارویی", "MedicationRecord", new { }, new { @class = "btn btn-primary div font" })

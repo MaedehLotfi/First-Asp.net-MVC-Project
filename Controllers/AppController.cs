@@ -19,13 +19,86 @@ namespace SoulHealth.Controllers
 
         //https://localhost:44307/api/App/GetPatientList
         //[HttpGet]
-        
         List<Models.Patient> mylistPatient = new List<Models.Patient>();
 
         public IEnumerable<Models.Patient> GetPatientList()
         {
             mylistPatient = mydb.Patients.ToList();
             return mylistPatient;
+        }
+
+        //with id
+        List<Models.Patient> myPatient = new List<Models.Patient>();
+
+        public IEnumerable<Models.Patient> GetPatientList(int id)
+        {
+            myPatient = mydb.Patients.Where(p=>p.id== id).ToList();
+            return myPatient;
+        }
+
+        List<Models.DiseaseRecord> DiseaseRecords = new List<Models.DiseaseRecord>();
+
+        public IEnumerable<Models.DiseaseRecord> GetDiseaseRecord(int id)
+        {
+            DiseaseRecords = mydb.DiseaseRecords.Where(p => p.userId == id).ToList();
+            return DiseaseRecords;
+        }
+
+        List<Models.ASocial> ASocials = new List<Models.ASocial>();
+
+        public IEnumerable<Models.ASocial> GetASocials(int id)
+        {
+            ASocials = mydb.ASocials.Where(p => p.SId == id).ToList();
+            return ASocials;
+        }
+
+        List<Models.ASelfManagement> ASelfManagements = new List<Models.ASelfManagement>();
+        public IEnumerable<Models.ASelfManagement> GetASelfManagement(int id)
+        {
+            ASelfManagements = mydb.ASelfManagement.Where(p => p.SId == id).ToList();
+            return ASelfManagements;
+        }
+
+        List<Models.APhysical> APhysical = new List<Models.APhysical>();
+        public IEnumerable<Models.APhysical> GetAPhysical(int id)
+        {
+            APhysical = mydb.APhysicals.Where(p => p.PhId == id).ToList();
+            return APhysical;
+        }
+
+        List<Models.MedicationRecord> MedicationRecords = new List<Models.MedicationRecord>();
+        public IEnumerable<Models.MedicationRecord> GetMedicationRecord(int id)
+        {
+            MedicationRecords = mydb.MedicationRecords.Where(p => p.userId == id).ToList();
+            return MedicationRecords;
+        }
+
+        List<Models.PhysiologicalData> PhysiologicalDatas = new List<Models.PhysiologicalData>();
+        public IEnumerable<Models.PhysiologicalData> GetPhysiologicalData(int id)
+        {
+            PhysiologicalDatas = mydb.PhysiologicalDatas.Where(p => p.PaiId == id).ToList();
+            return PhysiologicalDatas;
+        }
+
+        List<Models.PatientLimitation> limitations = new List<Models.PatientLimitation>();
+        public IEnumerable<Models.PatientLimitation> GetPatientLimitation(int id)
+        {
+            limitations = mydb.limitations.Where(p => p.PaId == id).ToList();
+            return limitations;
+        }
+
+        List<Models.ACognition> ACognitions = new List<Models.ACognition>();
+        public IEnumerable<Models.ACognition> GetACognitions(int id)
+        {
+            ACognitions = mydb.ACognitions.Where(p => p.PatientId == id).ToList();
+            return ACognitions;
+        }
+
+        List<Models.Drug> Drugs = new List<Models.Drug>();
+        public IEnumerable<Models.Drug> GetDrugs(int id)
+        {
+            Drugs = mydb.Drugs.Where(p => p.PId == id).ToList();
+            return Drugs;
         }
 
 
@@ -37,15 +110,29 @@ namespace SoulHealth.Controllers
             return DailyRecordlist;
         }
 
+        List<Models.DailyRecord> PersonDailyRecordlist = new List<Models.DailyRecord>();
+        public IEnumerable<Models.DailyRecord> GetDailyRecordList(int id)
+        {
+            PersonDailyRecordlist = mydb.DailyRecords.Where(p => p.id == id).ToList();
+            return PersonDailyRecordlist;
+        }
+
+        [System.Web.Http.HttpPost]
+        public void PostRecords (Models.DailyRecord record)
+        {
+            mydb.DailyRecords.Add(record);
+            mydb.SaveChanges();
+        }
 
 
-        //List<Models.ACognition> mylist = new List<Models.ACognition>();
+        //not working!
+        [System.Web.Http.HttpPost]
+        public void PostDailyRecord ([FromBody]Models.DailyRecord item)
+        {
+            mydb.DailyRecords.Add(item);
+            mydb.SaveChanges();
 
-        //public IEnumerable<Models.ACognition> GetACognitions()
-        //{
-        //    mylist = mydb.ACognitions.ToList();
-        //    return mylist;
-        //}
+        }
 
 
         // GET api/<controller>

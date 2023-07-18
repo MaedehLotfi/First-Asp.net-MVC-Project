@@ -48,12 +48,12 @@ namespace SoulHealth.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="لطفا ایمیل را وارد کنید")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "لطفا رمزعبور را وارد کنید")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

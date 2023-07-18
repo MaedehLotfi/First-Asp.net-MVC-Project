@@ -214,6 +214,18 @@
     <Compile Include="Migrations\202307030552472_dailyRecord.designer.cs">
       <DependentUpon>202307030552472_dailyRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202307170841455_drug.cs" />
+    <Compile Include="Migrations\202307170841455_drug.designer.cs">
+      <DependentUpon>202307170841455_drug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307170904491_disease.cs" />
+    <Compile Include="Migrations\202307170904491_disease.designer.cs">
+      <DependentUpon>202307170904491_disease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307171007205_update.cs" />
+    <Compile Include="Migrations\202307171007205_update.designer.cs">
+      <DependentUpon>202307171007205_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ACognition.cs" />
@@ -221,6 +233,7 @@
     <Compile Include="Models\ASelfManagement.cs" />
     <Compile Include="Models\ASocial.cs" />
     <Compile Include="Models\DailyRecord.cs" />
+    <Compile Include="Models\DiseaseRecord.cs" />
     <Compile Include="Models\Drug.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -1785,6 +1798,9 @@
     <Content Include="Views\Admin\ASocial.cshtml" />
     <Content Include="Views\Admin\ASocialList.cshtml" />
     <Content Include="Views\Admin\DailyRecordList.cshtml" />
+    <Content Include="Views\Admin\PatientDrugHistory.cshtml" />
+    <Content Include="Views\Admin\PatientDiseaseRecords.cshtml" />
+    <Content Include="Views\Admin\DiseaseRecords.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1823,6 +1839,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202307030552472_dailyRecord.resx">
       <DependentUpon>202307030552472_dailyRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307170841455_drug.resx">
+      <DependentUpon>202307170841455_drug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307170904491_disease.resx">
+      <DependentUpon>202307170904491_disease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307171007205_update.resx">
+      <DependentUpon>202307171007205_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

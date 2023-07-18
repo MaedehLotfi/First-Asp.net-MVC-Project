@@ -107,7 +107,9 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("ویرایش فعالیت خود مدیریتی جدید", "ASelfManagement", new { id = item.id }, new { @class = "btn btn-outline-success" })
+                    @Html.ActionLink("ویرایش سطح فعالیت خود مدیریتی کاربر", "ASelfManagement", new { id = item.id }, new { @class = "btn btn-outline-success" })
+                    <button class="btn btn-outline-danger deletebtn" myid="@item.id">حذف گزارش کاربر</button>
+
                 </td>
             </tr>
         }
@@ -120,7 +122,33 @@
     </div>
 </div>
 
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".deletebtn").click(function () {
+            var result = confirm("آیا از حذف گزارش کاربر مطمئن هستید؟");
+            if (result == true) {
+                var idtd = $(this).attr("myid");
+                var tr = $(this).parent().parent();
 
+                $.ajax({
+                    url: "@Url.Action("DeleteReportsByAjax")",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {id: idtd},
+                    success: function (response) {
+                        alert(response.msg)
+                        $(tr).remove();
+                    },
+                    error: function (response) {
+                        alert('گزارش کاربر حذف نشد');
+                    }
+                });
+
+            }
+            });
+    });
+</script>
 
 <style>
 
