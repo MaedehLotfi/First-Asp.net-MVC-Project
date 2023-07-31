@@ -39,6 +39,10 @@ namespace SoulHealth.Models
         public virtual ICollection<DailyRecord> DailyRecords { get; set; }
         public virtual ICollection<DiseaseRecord> DiseaseRecords { get; set; }
 
+        public virtual ICollection<SocialActivity> SocialActivities { get; set; }
+        public virtual ICollection<CognitionActivity> CognitionActivities { get; set; }
+        public virtual ICollection<PhysicalActivity> PhysicalActivities { get; set; }
+        public virtual ICollection<SelfManagementActivity> SelfActivities { get; set; }
 
 
     }

@@ -7,6 +7,9 @@
     <h2 class="font" >صفحه اصلی</h2>
     <div class="container">
 
+
+
+        @*لیست گزارشات روزانه کاربران*@
         <div class="row">
             <div class="col-sm col-md-6">
                 @Html.ActionLink("لیست گزارشات روزانه کاربران", "DailyRecordList", new { }, new { @class = "btn btn-info div font" })
@@ -14,6 +17,34 @@
 
         </div>
         <br />
+
+        @*لیست تعاملات اجتماعی روزانه کاربران*@
+        @*لیست تعاملات شناختی روزانه کاربران*@
+        <div class="row">
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("لیست تعاملات اجتماعی روزانه کاربران", "DailySocialList", new { }, new { @class = "btn btn-info div font" })
+            </div>
+            <div class="col-sm col-md-6">
+                @Html.ActionLink("لیست تعاملات شناختی روزانه کاربران", "DailyCognitionList", new { }, new { @class = "btn btn-info div font" })
+            </div>
+        </div>
+        <br />
+
+
+        @*لیست تعاملات فیزیکی روزانه کاربران*@
+        @*لیست تعاملات خود مدیریتی روزانه کاربران*@
+    <div class="row">
+        <div class="col-sm col-md-6">
+            @Html.ActionLink("لیست تعاملات فیزیکی روزانه کاربران", "DailyPhysicalList", new { }, new { @class = "btn btn-info div font" })
+        </div>
+        <div class="col-sm col-md-6">
+            @Html.ActionLink("لیست تعاملات خود مدیریتی روزانه کاربران", "DailySelfMList", new { }, new { @class = "btn btn-info div font" })
+        </div>
+    </div>
+        <br />
+
+        
+
 
         @*کاربرجدید*@
         <div class="row">

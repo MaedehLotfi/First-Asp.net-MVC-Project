@@ -1,17 +1,16 @@
-﻿@model IEnumerable<SoulHealth.Models.DailyRecord>
+﻿@model IEnumerable<SoulHealth.Models.PhysicalActivity>
 
 @{
-    ViewBag.Title = "DailyRecordList";
+    ViewBag.Title = "DailyPhysicalList";
     Layout = "~/Views/Shared/_admin.cshtml";
 }
 
 <div id="Container">
-
-    <h2>لیست گزارشات روزانه کاربران</h2>
+    <h2>لیست تعاملات فیزیکی روزانه کاربران</h2>
 
     <p>
         داده های این جدول توسط کاربران اپلیکیشن بصورت روزانه پر می شود.
-        ادمین با بررسی اطلاعات این جدول باید در <a href="@Url.Action("ASelfManagement")">جدول فعالیت های خود مدیریتی</a> یکی از سطوح را برای کاربر انتخاب کند.
+        ادمین با بررسی اطلاعات این جدول باید در <a href="@Url.Action("APhysical")">جدول فعالیت های فیزیکی </a> یکی از سطوح را برای کاربر انتخاب کند.
     </p>
     @using (Html.BeginForm())
     {
@@ -23,36 +22,37 @@
         </div>
     }
     <br />
-
     <table class="table table-bordered table-responsive">
         <tr class="table-info">
             <th>
-                @Html.DisplayNameFor(model => model.iid)
+                @Html.DisplayNameFor(model => model.Pid)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.morningDrug)
+                @Html.DisplayNameFor(model => model.walking)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.eveningDrug)
+                @Html.DisplayNameFor(model => model.walkingMore)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.nightDrug)
-            </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Weight)
+                @Html.DisplayNameFor(model => model.softness)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Height)
+                @Html.DisplayNameFor(model => model.running)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.bPressure)
+                @Html.DisplayNameFor(model => model.building)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.hBeat)
+                @Html.DisplayNameFor(model => model.fitness)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.bSugar)
+                @Html.DisplayNameFor(model => model.exercise)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.other)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discription)
             </th>
 
             <th></th>
@@ -62,36 +62,38 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.iid)
+                    @Html.DisplayFor(modelItem => item.Pid)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.morningDrug)
+                    @Html.DisplayFor(modelItem => item.walking)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.eveningDrug)
+                    @Html.DisplayFor(modelItem => item.walkingMore)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.nightDrug)
-                </td>
-               
-                <td>
-                    @Html.DisplayFor(modelItem => item.Weight)
+                    @Html.DisplayFor(modelItem => item.softness)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Height)
+                    @Html.DisplayFor(modelItem => item.running)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.bPressure)
+                    @Html.DisplayFor(modelItem => item.building)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.hBeat)
+                    @Html.DisplayFor(modelItem => item.fitness)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.bSugar)
+                    @Html.DisplayFor(modelItem => item.exercise)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.other)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.discription)
                 </td>
 
                 <td>
-                    @Html.ActionLink("ویرایش سطح فعالیت خود مدیریتی کاربر", "ASelfManagement", new { id = item.id }, new { @class = "btn btn-outline-success" })
+                    @Html.ActionLink("ویرایش سطح فعالیت فیزیکی کاربر", "APhysical", new { id = item.id }, new { @class = "btn btn-outline-success" })
                     <button class="btn btn-outline-danger deletebtn" myid="@item.id">حذف گزارش کاربر</button>
 
                 </td>
@@ -116,7 +118,7 @@
                 var tr = $(this).parent().parent();
 
                 $.ajax({
-                    url: "@Url.Action("DeleteReportsByAjax")",
+                    url: "@Url.Action("DeletePhysicalAByAjax")",
                     type: "POST",
                     dataType: 'json',
                     data: {id: idtd},

@@ -36,6 +36,10 @@ namespace SoulHealth.Models
         public DbSet<DailyRecord> DailyRecords { get; set; }
 
         public DbSet<DiseaseRecord> DiseaseRecords { get; set; }
+        public DbSet<SocialActivity> SocialActivities { get; set; }
+        public DbSet<CognitionActivity> cognitionActivities { get; set; }
+        public DbSet<PhysicalActivity> PhysicalActivities { get; set; }
+        public DbSet<SelfManagementActivity> SelfActivities { get; set; }
 
 
         public static ApplicationDbContext Create()

@@ -19,13 +19,6 @@ namespace SoulHealth.Models
         [Display(Name = "دارو شب")]
         public bool nightDrug { get; set; }
 
-
-        [Display(Name = "فعالیت شناختی")]
-        public bool ACognition { get; set; }
-        [Display(Name = "فعالیت فیزیکی")]
-        public bool APhysical { get; set; }
-        [Display(Name = "فعالیت اجتماعی")]
-        public bool ASocial { get; set; }
         [Display(Name = "وزن")]
         public string Weight { get; set; }
         [Display(Name = "قد")]

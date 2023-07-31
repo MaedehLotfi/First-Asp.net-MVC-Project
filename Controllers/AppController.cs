@@ -125,7 +125,7 @@ namespace SoulHealth.Controllers
         }
 
 
-        //not working!
+        //it is  working! PostDailyRecord
         [System.Web.Http.HttpPost]
         public void PostDailyRecord ([FromBody]Models.DailyRecord item)
         {
@@ -134,6 +134,39 @@ namespace SoulHealth.Controllers
 
         }
 
+        //PostSocialActivityRecord
+        [System.Web.Http.HttpPost]
+        public void PostSocialActivityRecord([FromBody] Models.SocialActivity item)
+        {
+            mydb.SocialActivities.Add(item);
+            mydb.SaveChanges();
+
+        }
+
+        //PostCognitionActivityRecord
+        [System.Web.Http.HttpPost]
+        public void PostCognitionActivityRecord([FromBody] Models.CognitionActivity item)
+        {
+            mydb.cognitionActivities.Add(item);
+            mydb.SaveChanges();
+
+        }
+        //PostPhysicalActivityRecord
+        [System.Web.Http.HttpPost]
+        public void PostPhysicalActivityRecord([FromBody] Models.PhysicalActivity item)
+        {
+            mydb.PhysicalActivities.Add(item);
+            mydb.SaveChanges();
+
+        }
+        //PostSelfManagementActivityRecord
+        [System.Web.Http.HttpPost]
+        public void PostSelfManagementActivityRecord([FromBody] Models.SelfManagementActivity item)
+        {
+            mydb.SelfActivities.Add(item);
+            mydb.SaveChanges();
+
+        }
 
         // GET api/<controller>
         //public IEnumerable<string> Get()

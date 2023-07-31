@@ -20,6 +20,94 @@ namespace SoulHealth.Controllers
         {
             return View();
         }
+
+
+        //SocialActivityRecord
+        public ActionResult DailySocialList(int? searchpoint)
+        {
+            var result = mydb.SocialActivities.ToList();
+
+
+            if (searchpoint != null && searchpoint != 0)
+            {
+                result = result.Where(p => p.Pid == searchpoint).ToList();
+            }
+            return View(result);
+        }
+        public async Task<ActionResult> DeleteSocialAByAjax(int id)
+        {
+            var result = mydb.SocialActivities.Where(p => p.id == id).FirstOrDefault();
+            mydb.SocialActivities.Remove(result);
+            mydb.SaveChanges();
+
+            return Json(new { msg = "گزارش تعاملات اجتماعی با موفقیت حذف شد" });
+
+        }
+        //ConitionActivityRecord
+        public ActionResult DailyCognitionList(int? searchpoint)
+        {
+            var result = mydb.cognitionActivities.ToList();
+
+
+            if (searchpoint != null && searchpoint != 0)
+            {
+                result = result.Where(p => p.Pid == searchpoint).ToList();
+            }
+            return View(result);
+        }
+        public async Task<ActionResult> DeleteCognitionAByAjax(int id)
+        {
+            var result = mydb.cognitionActivities.Where(p => p.id == id).FirstOrDefault();
+            mydb.cognitionActivities.Remove(result);
+            mydb.SaveChanges();
+
+            return Json(new { msg = "گزارش تعاملات شناختی با موفقیت حذف شد" });
+
+        }
+        //PhysicalActivityRecord
+        public ActionResult DailyPhysicalList(int? searchpoint)
+        {
+            var result = mydb.PhysicalActivities.ToList();
+
+
+            if (searchpoint != null && searchpoint != 0)
+            {
+                result = result.Where(p => p.Pid == searchpoint).ToList();
+            }
+            return View(result);
+        }
+        public async Task<ActionResult> DeletePhysicalAByAjax(int id)
+        {
+            var result = mydb.PhysicalActivities.Where(p => p.id == id).FirstOrDefault();
+            mydb.PhysicalActivities.Remove(result);
+            mydb.SaveChanges();
+
+            return Json(new { msg = "گزارش تعاملات فیزیکی با موفقیت حذف شد" });
+
+        }
+        //SelfActivityRecord
+        public ActionResult DailySelfMList(int? searchpoint)
+        {
+            var result = mydb.SelfActivities.ToList();
+
+
+            if (searchpoint != null && searchpoint != 0)
+            {
+                result = result.Where(p => p.Pid == searchpoint).ToList();
+            }
+            return View(result);
+        }
+        public async Task<ActionResult> DeleteSelfAByAjax(int id)
+        {
+            var result = mydb.SelfActivities.Where(p => p.id == id).FirstOrDefault();
+            mydb.SelfActivities.Remove(result);
+            mydb.SaveChanges();
+
+            return Json(new { msg = "گزارش تعاملات خود مدیریتی با موفقیت حذف شد" });
+
+        }
+
+
         //dailyRecord
         public ActionResult DailyRecordList(int? searchpoint)
         {

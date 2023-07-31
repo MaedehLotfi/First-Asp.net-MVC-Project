@@ -226,12 +226,41 @@
     <Compile Include="Migrations\202307171007205_update.designer.cs">
       <DependentUpon>202307171007205_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202307290604064_changerecords.cs" />
+    <Compile Include="Migrations\202307290604064_changerecords.designer.cs">
+      <DependentUpon>202307290604064_changerecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307290753058_socialactivity.cs" />
+    <Compile Include="Migrations\202307290753058_socialactivity.designer.cs">
+      <DependentUpon>202307290753058_socialactivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307290957242_socialchng.cs" />
+    <Compile Include="Migrations\202307290957242_socialchng.designer.cs">
+      <DependentUpon>202307290957242_socialchng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307291021369_cognitionact.cs" />
+    <Compile Include="Migrations\202307291021369_cognitionact.designer.cs">
+      <DependentUpon>202307291021369_cognitionact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307291041144_physicaltbl.cs" />
+    <Compile Include="Migrations\202307291041144_physicaltbl.designer.cs">
+      <DependentUpon>202307291041144_physicaltbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307291049443_physicaltblchng.cs" />
+    <Compile Include="Migrations\202307291049443_physicaltblchng.designer.cs">
+      <DependentUpon>202307291049443_physicaltblchng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307291101033_selfm.cs" />
+    <Compile Include="Migrations\202307291101033_selfm.designer.cs">
+      <DependentUpon>202307291101033_selfm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ACognition.cs" />
     <Compile Include="Models\APhysical.cs" />
     <Compile Include="Models\ASelfManagement.cs" />
     <Compile Include="Models\ASocial.cs" />
+    <Compile Include="Models\CognitionActivity.cs" />
     <Compile Include="Models\DailyRecord.cs" />
     <Compile Include="Models\DiseaseRecord.cs" />
     <Compile Include="Models\Drug.cs" />
@@ -240,7 +269,10 @@
     <Compile Include="Models\MedicationRecord.cs" />
     <Compile Include="Models\PatientLimitation.cs" />
     <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\PhysicalActivity.cs" />
     <Compile Include="Models\PhysiologicalData.cs" />
+    <Compile Include="Models\SelfManagementActivity.cs" />
+    <Compile Include="Models\SocialActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1801,6 +1833,10 @@
     <Content Include="Views\Admin\PatientDrugHistory.cshtml" />
     <Content Include="Views\Admin\PatientDiseaseRecords.cshtml" />
     <Content Include="Views\Admin\DiseaseRecords.cshtml" />
+    <Content Include="Views\Admin\DailySocialList.cshtml" />
+    <Content Include="Views\Admin\DailyCognitionList.cshtml" />
+    <Content Include="Views\Admin\DailyPhysicalList.cshtml" />
+    <Content Include="Views\Admin\DailySelfMList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1848,6 +1884,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202307171007205_update.resx">
       <DependentUpon>202307171007205_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307290604064_changerecords.resx">
+      <DependentUpon>202307290604064_changerecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307290753058_socialactivity.resx">
+      <DependentUpon>202307290753058_socialactivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307290957242_socialchng.resx">
+      <DependentUpon>202307290957242_socialchng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307291021369_cognitionact.resx">
+      <DependentUpon>202307291021369_cognitionact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307291041144_physicaltbl.resx">
+      <DependentUpon>202307291041144_physicaltbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307291049443_physicaltblchng.resx">
+      <DependentUpon>202307291049443_physicaltblchng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307291101033_selfm.resx">
+      <DependentUpon>202307291101033_selfm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
